@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      - id: 20221117_create-function
+        author: carolina.sarateanu
+        failOnError: true
+        changes:
+      - sql:
+          dbms: 'postgresql'
+          splitStatements: false
+          sql: |
+            CREATE OR REPLACE FUNCTION total_students()  
+            RETURNS integer AS $total$  
+            declare  
+                total integer;  
+            BEGIN  
+               SELECT count(*) into total FROM STUDENTS;  
+               RETURN total;  
+            END;  
+            $total$ LANGUAGE plpgsql;

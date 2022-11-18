@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221117_create-student
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: CREATE TABLE students (
+              student_id UUID PRIMARY KEY,
+              firstname VARCHAR(50) NOT NULL,
+              lastname VARCHAR(50) NOT NULL,
+              address_id UUID NOT NULL,
+              CONSTRAINT fk_address_id
+              FOREIGN KEY (address_id)
+              REFERENCES address(address_id)
+              );

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221117_create-professor-university
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: CREATE TABLE professor_university (
+              university_id UUID NOT NULL,
+              professor_id UUID NOT NULL
+              );

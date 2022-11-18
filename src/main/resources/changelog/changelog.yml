@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - include:
+      - file: 20221117_create-address.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-student.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-course.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-professor.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-professor-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-student-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-course-student.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-course-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-function.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-procedure.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-trigger-function.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-trigger.yml
+      - relativeToChangelogFile: true

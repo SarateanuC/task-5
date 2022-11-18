@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      - id: 20221117_create-function
+        author: carolina.sarateanu
+        failOnError: true
+        changes:
+      - sql:
+          dbms: 'postgresql'
+          splitStatements: false
+          sql: CREATE TRIGGER username_check
+               BEFORE INSERT OR UPDATE
+               ON students
+               FOR EACH ROW
+               EXECUTE PROCEDURE check_student_age();

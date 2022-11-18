@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221117_create-course
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: CREATE TABLE course (
+              course_id UUID PRIMARY KEY,
+              name VARCHAR(50) NOT NULL
+              );

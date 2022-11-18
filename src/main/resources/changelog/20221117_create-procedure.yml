@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      - id: 20221117_create-function
+        author: carolina.sarateanu
+        failOnError: true
+        changes:
+      - sql:
+          dbms: 'postgresql'
+          splitStatements: false
+          sql: CREATE OR REPLACE PROCEDURE insert_data(a UUID, b name)
+               LANGUAGE sql
+               AS $procedure$
+               INSERT INTO address VALUES (a, b);
+               $procedure$
+
