@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221118_insert-course
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: INSERT INTO course(course_id, name)
+              VALUES('ff43bece-672e-11ed-9022-0242ac120002', 'Bioinginerie');
+        - sql:
+            sql: INSERT INTO course(course_id, name)
+              VALUES('ff43bece-672e-11ed-9022-0242ac120003', 'Fizica');

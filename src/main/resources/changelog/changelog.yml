@@ -38,3 +38,30 @@ databaseChangeLog:
   - include:
       - file: 20221117_create-trigger.yml
       - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert_addresses.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-course.yml
+      - relativeToChangelogFile: true
+#  - include:
+#      - file: 20221118_insert_into_students.yml
+#      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert_university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-professor.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-course-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-course-student.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-professor-university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert-student_university.yml
+      - relativeToChangelogFile: true

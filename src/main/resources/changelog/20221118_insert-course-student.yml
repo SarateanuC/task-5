@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221118_insert-course-student
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: INSERT INTO student_course(course_id, student_id)
+              VALUES('ff43bece-672e-11ed-9022-0242ac120002', 'a1fc5242-6726-11ed-9022-0242ac120002');
+        - sql:
+            sql: INSERT INTO student_course(course_id,student_id)
+              VALUES('ff43bece-672e-11ed-9022-0242ac120002', 'a1fc4f7c-6726-11ed-9022-0242ac120003');
+        - sql:
+            sql: INSERT INTO student_course(course_id,student_id)
+              VALUES('ff43bece-672e-11ed-9022-0242ac120003', 'a1fc4f7c-6726-11ed-9022-0242ac120003');

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221118_insert-student-university
+      author: carolina.sarateanu
+      failOnError: true
+      changes:
+        - sql:
+            sql: INSERT INTO students_universities(student_id,university_id)
+              VALUES('a1fc5242-6726-11ed-9022-0242ac120002', 'a1fc53f0-6726-11ed-9022-0242ac120002');
+        - sql:
+            sql: INSERT INTO students_universities(university_id,student_id)
+              VALUES('a1fc53f0-6726-11ed-9022-0242ac120002', 'a1fc4f7c-6726-11ed-9022-0242ac120003');
+        - sql:
+            sql: INSERT INTO students_universities(university_id,student_id)
+              VALUES('a1fc5242-6726-11ed-9022-0242ac120017', 'a1fc4f7c-6726-11ed-9022-0242ac120003');
+        - sql:
+            sql: INSERT INTO students_universities(university_id,student_id)
+              VALUES('a1fc5242-6726-11ed-9022-0242ac120017', 'a1fc5242-6726-11ed-9022-0242ac120002');
