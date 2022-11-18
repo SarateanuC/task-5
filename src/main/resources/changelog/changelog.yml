@@ -44,9 +44,9 @@ databaseChangeLog:
   - include:
       - file: 20221118_insert-course.yml
       - relativeToChangelogFile: true
-#  - include:
-#      - file: 20221118_insert_into_students.yml
-#      - relativeToChangelogFile: true
+  - include:
+      - file: 20221118_insert_into_students.yml
+      - relativeToChangelogFile: true
   - include:
       - file: 20221118_insert_university.yml
       - relativeToChangelogFile: true
