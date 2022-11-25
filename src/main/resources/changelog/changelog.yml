@@ -27,18 +27,6 @@ databaseChangeLog:
       - file: 20221117_create-course-university.yml
       - relativeToChangelogFile: true
   - include:
-      - file: 20221117_create-function.yml
-      - relativeToChangelogFile: true
-  - include:
-      - file: 20221117_create-procedure.yml
-      - relativeToChangelogFile: true
-  - include:
-      - file: 20221117_create-trigger-function.yml
-      - relativeToChangelogFile: true
-  - include:
-      - file: 20221117_create-trigger.yml
-      - relativeToChangelogFile: true
-  - include:
       - file: 20221118_insert_addresses.yml
       - relativeToChangelogFile: true
   - include:
@@ -64,4 +52,16 @@ databaseChangeLog:
       - relativeToChangelogFile: true
   - include:
       - file: 20221118_insert-student_university.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-function.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-procedure.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-trigger-function.yml
+      - relativeToChangelogFile: true
+  - include:
+      - file: 20221117_create-trigger.yml
       - relativeToChangelogFile: true

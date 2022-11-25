@@ -13,7 +13,5 @@ import java.util.UUID;
 public class UniversityDbo {
     private UUID university_id;
     private String name;
-    private UUID address_id;
-    private List<CourseDbo> courses;
-    private List<ProfessorDbo> professors;
+    private UUID address;
 }
