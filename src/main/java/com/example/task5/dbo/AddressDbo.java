@@ -1,12 +1,12 @@
-package com.example.task5.model;
+package com.example.task5.dbo;
 
 import lombok.*;
 
 import java.util.UUID;
 
-@Builder
-@Setter
 @Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressDbo {

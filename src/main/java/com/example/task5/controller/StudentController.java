@@ -1,6 +1,7 @@
 package com.example.task5.controller;
 
-import com.example.task5.model.StudentDbo;
+import com.example.task5.dbo.StudentDbo;
+import com.example.task5.dto.StudentDto;
 import com.example.task5.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,12 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping("/all")
-    public List<StudentDbo> selectAllStudents() {
+    public List<StudentDto> selectAllStudents() {
         return studentService.selectAll();
     }
 
     @GetMapping("/by-id")
-    public StudentDbo selectById(@RequestParam("student-id") UUID id) {
+    public StudentDto selectById(@RequestParam("student-id") UUID id) {
         return studentService.selectById(id);
     }
 }

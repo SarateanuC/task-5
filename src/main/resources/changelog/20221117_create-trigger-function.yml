@@ -7,7 +7,7 @@ databaseChangeLog:
       - sql:
           dbms: 'postgresql'
           splitStatements: false
-          sql: CREATE FUNCTION check_student_age()
+          sql: CREATE OR REPLACE FUNCTION check_student_age()
             RETURNS TRIGGER
             AS $$
             BEGIN

@@ -1,7 +1,8 @@
 package com.example.task5.universityTests;
 
+import com.example.task5.dbo.AddressDbo;
+import com.example.task5.dbo.UniversityDbo;
 import com.example.task5.mapper.UniversityMapper;
-import com.example.task5.model.UniversityDbo;
 import com.example.task5.service.impl.UniversityServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,8 +33,9 @@ public class UniversityServiceMockTest {
     @Test
     public void selectByIdSuccessTest() {
         UniversityDbo universityDbo = UniversityDbo.builder()
-                .university_id(UUID.randomUUID())
-                .address(UUID.randomUUID())
+                .university_id(randomUUID())
+                .addressDbo(AddressDbo.builder().name("name")
+                        .address_id(UUID.randomUUID()).build())
                 .name("UTM")
                 .build();
         when(universityMapper.selectById(any())).thenReturn(of(universityDbo));
@@ -50,16 +52,18 @@ public class UniversityServiceMockTest {
     public void selectByAllSuccessTest() {
         UniversityDbo universityDbo1 = UniversityDbo.builder()
                 .university_id(UUID.randomUUID())
-                .address(UUID.randomUUID())
+                .addressDbo(AddressDbo.builder().name("name")
+                        .address_id(UUID.randomUUID()).build())
                 .name("UTM")
                 .build();
-        UniversityDbo universityDbo2= UniversityDbo.builder()
+        UniversityDbo universityDbo2 = UniversityDbo.builder()
                 .university_id(UUID.randomUUID())
-                .address(UUID.randomUUID())
+                .addressDbo(AddressDbo.builder().name("name")
+                        .address_id(UUID.randomUUID()).build())
                 .name("USM")
                 .build();
 
-        when(universityMapper.selectAll()).thenReturn(List.of(universityDbo1,universityDbo2));
+        when(universityMapper.selectAll()).thenReturn(List.of(universityDbo1, universityDbo2));
         assertThat(universityService.selectAll().get(0).getName()).isEqualTo(universityDbo1.getName());
         assertThat(universityService.selectAll().size()).isEqualTo(2);
     }

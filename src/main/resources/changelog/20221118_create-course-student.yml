@@ -1,11 +1,11 @@
 databaseChangeLog:
   - changeSet:
-      id: 20221117_create-student-university
+      id: 20221117_create-course-student
       author: carolina.sarateanu
       failOnError: true
       changes:
         - sql:
-            sql: CREATE TABLE students_universities (
+            sql: CREATE TABLE student_course (
               student_id UUID NOT NULL,
-              university_id UUID NOT NULL
+              course_id UUID NOT NULL
               );

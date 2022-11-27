@@ -1,21 +1,23 @@
-package com.example.task5.model;
+package com.example.task5.dto;
 
+import com.example.task5.dbo.AddressDbo;
+import com.example.task5.dbo.CourseDbo;
 import lombok.*;
 
 import java.util.List;
 import java.util.UUID;
-
-@Builder
-@Setter
 @Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentDbo {
+public class StudentDto {
     private UUID student_id;
     private String firstname;
     private String lastname;
     private Integer age;
-    private UUID address_id;
+    private UUID university;
+    private AddressDbo addressDbo;
     private List<CourseDbo> courses;
-    private List<UniversityDbo> universities;
 }
+

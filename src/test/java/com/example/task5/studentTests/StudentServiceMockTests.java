@@ -1,8 +1,8 @@
 package com.example.task5.studentTests;
 
+import com.example.task5.dbo.AddressDbo;
+import com.example.task5.dbo.StudentDbo;
 import com.example.task5.mapper.StudentMapper;
-import com.example.task5.model.CourseDbo;
-import com.example.task5.model.StudentDbo;
 import com.example.task5.service.impl.StudentServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static java.util.Optional.of;
 import static java.util.UUID.randomUUID;
@@ -33,13 +34,13 @@ public class StudentServiceMockTests {
     public void selectByIdSuccessTest() {
         StudentDbo studentDbo = StudentDbo.builder()
                 .student_id(randomUUID())
-                .address_id(randomUUID())
+                .addressDbo(AddressDbo.builder()
+                        .address_id(randomUUID())
+                        .name("ad1")
+                        .build())
                 .lastname("last")
                 .firstname("first")
-                .courses(List.of(CourseDbo.builder()
-                        .course_id(randomUUID())
-                        .name("Curs")
-                        .build()))
+                .university(UUID.randomUUID())
                 .build();
         when(studentMapper.selectById(any())).thenReturn(of(studentDbo));
         assertThat(studentService.selectById(randomUUID()).getFirstname()).isEqualTo(studentDbo.getFirstname());
@@ -55,23 +56,23 @@ public class StudentServiceMockTests {
     public void selectByAllSuccessTest() {
         StudentDbo studentDbo1 = StudentDbo.builder()
                 .student_id(randomUUID())
-                .address_id(randomUUID())
+                .addressDbo(AddressDbo.builder()
+                        .address_id(randomUUID())
+                        .name("ad1")
+                        .build())
                 .lastname("last1")
                 .firstname("first1")
-                .courses(List.of(CourseDbo.builder()
-                        .course_id(randomUUID())
-                        .name("Curs")
-                        .build()))
+                .university(UUID.randomUUID())
                 .build();
         StudentDbo studentDbo2 = StudentDbo.builder()
                 .student_id(randomUUID())
-                .address_id(randomUUID())
+                .addressDbo(AddressDbo.builder()
+                        .address_id(randomUUID())
+                        .name("ad1")
+                        .build())
                 .lastname("last2")
-                .firstname("first3")
-                .courses(List.of(CourseDbo.builder()
-                        .course_id(randomUUID())
-                        .name("Curs")
-                        .build()))
+                .firstname("first2")
+                .university(UUID.randomUUID())
                 .build();
         when(studentMapper.selectAll()).thenReturn(List.of(studentDbo1, studentDbo2));
         assertThat(studentService.selectAll().get(0).getFirstname()).isEqualTo(studentDbo1.getFirstname());

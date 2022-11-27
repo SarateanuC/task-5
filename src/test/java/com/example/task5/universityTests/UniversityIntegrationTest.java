@@ -1,6 +1,7 @@
 package com.example.task5.universityTests;
 
-import com.example.task5.model.UniversityDbo;
+import com.example.task5.dbo.UniversityDbo;
+import com.example.task5.dto.UniversityDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.assertj.core.api.Assertions;
@@ -24,23 +25,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 @SqlGroup(
         @Sql(scripts = {"/sql/20221125_create-address.sql",
-                "/sql/20221125_create-course.sql",
-                "/sql/20221125_create_students.sql",
-                "/sql/20221125_create-university.sql",
-                "/sql/20221125_create-professor.sql",
-                "/sql/20221125_create-student-university.sql",
-                "/sql/20221125_create-professor-university.sql",
-                "/sql/20221125_create-course-university.sql",
-                "/sql/20221125_create-course-student.sql",
                 "/sql/20221125_insert-address.sql",
-                "/sql/20221125_insert-course.sql",
-                "/sql/20221125_insert-student.sql",
+                "/sql/20221125_create-university.sql",
                 "/sql/20221125_insert_university.sql",
-                "/sql/20221125_insert-professor.sql",
-                "/sql/20221125_insert-student-university.sql",
-                "/sql/20221125_insert-professor--university.sql",
-                "/sql/20221125_insert-course-university.sql",
-                "/sql/20221125_insert-course-student.sql"}))
+                "/sql/20221125_create-course.sql",
+                "/sql/20221125_insert-course.sql",
+                "/sql/20221125_create_students.sql",
+                "/sql/20221125_insert-student.sql"
+        }))
 public class UniversityIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
@@ -51,26 +43,28 @@ public class UniversityIntegrationTest {
     @SneakyThrows
     void selectById() {
         MvcResult mvcResult = mockMvc.perform(get("/api/university/by-id")
-                        .param("id", "a1fc5242-6726-11ed-9022-0242ac120017")
+                        .param("id", "ab3daa2c-6d93-11ed-a1eb-0242ac120002")
                         .contentType("application/json"))
                 .andReturn();
 
         String contentAsString = mvcResult.getResponse().getContentAsString();
 
-        UniversityDbo universityDbo = objectMapper.readValue(contentAsString, UniversityDbo.class);
-        Assertions.assertThat(universityDbo.getName()).isEqualTo("UTM");
+        UniversityDto universityDto = objectMapper.readValue(contentAsString, UniversityDto.class);
+        Assertions.assertThat(universityDto.getName()).isEqualTo("USM");
+        Assertions.assertThat(universityDto.getCourses().size()).isEqualTo(1);
+        Assertions.assertThat(universityDto.getStudents().size()).isEqualTo(1);
     }
 
     @Test
     @SneakyThrows
     void selectAll() {
-        MvcResult mvcResult = mockMvc.perform(get("/api/student/all")
+        MvcResult mvcResult = mockMvc.perform(get("/api/university/all")
                         .contentType("application/json"))
                 .andReturn();
 
         String contentAsString = mvcResult.getResponse().getContentAsString();
 
-        List<UniversityDbo> universityDbos = List.of(objectMapper.readValue(contentAsString, UniversityDbo[].class));
-        Assertions.assertThat(universityDbos.size()).isEqualTo(2);
+        List<UniversityDto> universityDtos = List.of(objectMapper.readValue(contentAsString, UniversityDto[].class));
+        Assertions.assertThat(universityDtos.size()).isEqualTo(2);
     }
 }

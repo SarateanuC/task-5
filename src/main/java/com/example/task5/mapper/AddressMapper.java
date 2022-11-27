@@ -1,19 +1,16 @@
 package com.example.task5.mapper;
 
-import com.example.task5.model.AddressDbo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import com.example.task5.dbo.AddressDbo;
+import com.example.task5.mapper.typeHandler.UuidTypeHandler;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 
 @Mapper
 public interface AddressMapper {
-    @Select("SELECT * FROM address")
-    List<AddressDbo> findAll();
-
-    @Select("SELECT * FROM address where address_id = #{id}")
-    Optional<AddressDbo> findById(@Param("id") UUID id);
+    @Select("Select * from address where address_id = #{address_id}")
+    @Results({
+            @Result(id = true, property = "address_id", column = "address_id",
+                    jdbcType = JdbcType.OTHER, typeHandler = UuidTypeHandler.class),
+            @Result(property = "name", column = "name")})
+    AddressDbo findById(String address_id);
 }
